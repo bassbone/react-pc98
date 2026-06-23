@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# react-pc98
 
-## Getting Started
+PC-98風UIコンポーネントライブラリ。Next.js / React 向けに構築されたレトロスタイルのUIセットです。
 
-First, run the development server:
+## コンポーネント一覧
+
+| コンポーネント | 説明 |
+|---|---|
+| `Window` | タイトルバー付きウィンドウ |
+| `Button` | ボタン（通常 / プライマリ / 危険） |
+| `TextInput` | テキスト入力フィールド |
+| `Checkbox` | チェックボックス |
+| `Select` | セレクトボックス |
+| `MenuBar` | メニューバー（ドロップダウン付き） |
+| `Dialog` | モーダルダイアログ |
+| `ProgressBar` | プログレスバー |
+| `Terminal` | ターミナルエミュレータ |
+| `StatusBar` | ステータスバー |
+| `Desktop` | デスクトップ背景（壁紙パターン対応） |
+
+## 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) でデモが確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 使い方
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+import { Window, Button, Desktop } from './lib';
 
-## Learn More
+export default function App() {
+  return (
+    <Desktop wallpaper="dots">
+      <Window title="はじめてのウィンドウ" x={50} y={50} width={300} height={200} onClose={() => {}}>
+        <Button variant="primary">クリック</Button>
+      </Window>
+    </Desktop>
+  );
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 技術スタック
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org) 16
+- [React](https://react.dev) 19
+- TypeScript
