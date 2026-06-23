@@ -1,0 +1,92 @@
+/* PC-98 Color Palette & Base Styles */
+
+@font-face {
+  font-family: 'PC98';
+  src: local('MS Gothic'), local('ＭＳ ゴシック'),
+       local('MS Mincho'), local('ＭＳ 明朝'),
+       local('Courier New'),
+       local('monospace');
+}
+
+:root {
+  /* PC-98 16-color palette */
+  --pc98-black:        #000000;
+  --pc98-dark-blue:    #0000AA;
+  --pc98-dark-green:   #00AA00;
+  --pc98-dark-cyan:    #00AAAA;
+  --pc98-dark-red:     #AA0000;
+  --pc98-dark-magenta: #AA00AA;
+  --pc98-brown:        #AA5500;
+  --pc98-light-gray:   #AAAAAA;
+  --pc98-dark-gray:    #555555;
+  --pc98-blue:         #5555FF;
+  --pc98-green:        #55FF55;
+  --pc98-cyan:         #55FFFF;
+  --pc98-red:          #FF5555;
+  --pc98-magenta:      #FF55FF;
+  --pc98-yellow:       #FFFF55;
+  --pc98-white:        #FFFFFF;
+
+  /* Semantic tokens */
+  --pc98-bg:           var(--pc98-black);
+  --pc98-desktop-bg:   var(--pc98-dark-blue);
+  --pc98-window-bg:    var(--pc98-dark-blue);
+  --pc98-window-title-bg: var(--pc98-blue);
+  --pc98-window-title-fg: var(--pc98-white);
+  --pc98-border-light: var(--pc98-white);
+  --pc98-border-dark:  var(--pc98-dark-gray);
+  --pc98-text:         var(--pc98-white);
+  --pc98-text-dim:     var(--pc98-light-gray);
+  --pc98-highlight-bg: var(--pc98-blue);
+  --pc98-highlight-fg: var(--pc98-white);
+  --pc98-button-bg:    var(--pc98-light-gray);
+  --pc98-button-fg:    var(--pc98-black);
+  --pc98-input-bg:     var(--pc98-black);
+  --pc98-input-fg:     var(--pc98-white);
+  --pc98-input-border: var(--pc98-light-gray);
+  --pc98-menu-bg:      var(--pc98-light-gray);
+  --pc98-menu-fg:      var(--pc98-black);
+
+  /* PC-98 screen: 640x400 or 640x480 */
+  --pc98-screen-width:  640px;
+  --pc98-screen-height: 480px;
+
+  /* Typography */
+  --pc98-font: 'MS Gothic', 'ＭＳ ゴシック', 'Courier New', monospace;
+  --pc98-font-size: 16px;
+  --pc98-line-height: 1.5;
+}
+
+.pc98-root {
+  font-family: var(--pc98-font);
+  font-size: var(--pc98-font-size);
+  line-height: var(--pc98-line-height);
+  background-color: var(--pc98-desktop-bg);
+  color: var(--pc98-text);
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  cursor: default;
+  user-select: none;
+}
+
+/* Disable animations in reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .pc98-blink {
+    animation: none !important;
+  }
+}
+
+@keyframes pc98-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.pc98-blink {
+  animation: pc98-blink 1s step-end infinite;
+}
+
+@keyframes pc98-scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
